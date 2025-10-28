@@ -14,9 +14,8 @@ jobs:
         id: oidc
         run: |
           TOKEN=$(curl -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-                      "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=github-wif")
+                      "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=//iam.googleapis.com/projects/302738259737/locations/global/workloadIdentityPools/github-pool/providers/github-provider")
           echo "$TOKEN" > github-oidc-token.json
-          cat github-oidc-token.json
       - name: Extract JWT
         run: jq -r '.value' github-oidc-token.json > github-oidc-token.jwt
       - name: Upload JWT artifact
