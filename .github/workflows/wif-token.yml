@@ -20,7 +20,7 @@ jobs:
       - name: Extract JWT
         run: jq -r '.value' github-oidc-token.json > github-oidc-token.jwt
       - name: Upload JWT artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: github-oidc-token
           path: github-oidc-token.jwt
